@@ -34,6 +34,20 @@ sha256sum --check --ignore-missing SHA256SUMS
 sudo apt install ./signpost_0.1.0_amd64.deb
 ```
 
+**NixOS:**
+
+Signpost user [wingej0](https://github.com/wingej0) maintains [a flake](https://github.com/wingej0/ext-cosmic-applets-flake) with several Cosmic applets and projects.  To install Signpost from that flake, add the following line to the inputs of your flake.nix:
+
+```nix
+cosmic-applets-collection.url = "github:wingej0/ext-cosmic-applets-flake";
+```
+
+Then, add this line to your packages list (This assumes that you use @inputs in your flake. If you don't, adjust this line accordingly):
+
+```nix
+inputs.cosmic-applets-collection.packages."${system}".signpost
+```
+
 **Flatpak,** on any distribution. Its runtime comes from Flathub:
 
 ```sh
